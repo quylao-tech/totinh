@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hôm nay em thế nào? 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .good {
+      background: #28a745;
+      color: white;
+    }
+
+    .tired {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #reply {
+      margin-top: 20px;
+      font-size: 18px;
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>Hôm nay em thế nào? Có mệt không? 💕</h1>
+
+    <button class="good" onclick="feelGood()">Ổn lắm 😊</button>
+    <button class="tired" onclick="feelTired()">Mệt lắm 😢</button>
+
+    <div id="reply"></div>
+  </div>
+
+  <script>
+    const reply = document.getElementById("reply");
+
+    function feelGood() {
+      reply.style.display = "block";
+      reply.innerHTML = "Vậy thì ngon luôn 😍 Anh yêu emmmm 💖";
+      createHearts();
+    }
+
+    function feelTired() {
+      reply.style.display = "block";
+      reply.innerHTML = "Ôm cái nào 🤗 Có gì tâm sự với a nhé! Anh luôn ở đây bên em mà 💕";
+      createHearts();
+    }
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "💖";
+
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
